@@ -43,7 +43,7 @@ Finally, this phase introduces the "Happy Path": the ideal execution flow where 
 
 > 🔑 **Key Takeaway:** Before designing a system, one must first define its purpose through functional requirements and its quality through non-functional requirements, using a shared vocabulary of metrics like the Four Golden Signals and the SLO/Error Budget framework to guide development.
 
-> ![](images/1)
+> ![Happy path](images/1.png)
 
 ## Phase 2: The Reality - Hardware Physics, State Mechanics, and Breaking Points
 
@@ -74,7 +74,7 @@ These post-mortems move the discussion from abstract theory to concrete evidence
 
 > 🔑 **Key Takeaway:** Systems break not just because of bugs, but because of the interplay between software logic, hardware limitations, and the sheer complexity of managing state at scale. Real-world outages demonstrate that dependencies, operational procedures, and stateful subsystems are common sources of catastrophic failure.
 
-> ![](images/2.png)
+> ![Happy path with bottleneck](images/2.png)
 
 ## Phase 3: The Scale - Consistency Models, Distributed Theorems, and Systemic Consequences
 

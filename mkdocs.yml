@@ -1,0 +1,36 @@
+site_name: Alshamali System Design Notes
+site_description: An encyclopedia-style guide on system design and software architecture.
+
+theme:
+  name: material
+  palette:
+    # Light mode configuration
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode configuration
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.sections    # Grouping sections in the sidebar cleanly
+    - navigation.expand      # Automatically expands navigation trees
+    - search.suggest         # As-you-type search suggestions
+    - search.highlight       # Highlight searched terms on the page
+
+markdown_extensions:
+  - admonition               # For custom warning/info callout boxes
+  - pymdownx.details         # For collapsible content blocks
+  - pymdownx.superfences     # Superior parsing for complex code blocks / diagrams
+  - toc:
+      permalink: true        # Adds clickable anchor links to headers (great for SEO)
+
+plugins:
+  - search
+  - awesome-pages
