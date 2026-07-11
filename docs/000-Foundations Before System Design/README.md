@@ -37,13 +37,13 @@ This hierarchy reveals a fundamental principle: the CPU is incredibly fast compa
 
 Finally, this phase introduces the "Happy Path": the ideal execution flow where a system operates smoothly under expected conditions. In a simple API, this would be a client sending a valid request, the server processing it quickly, and returning a correct response without errors. While seemingly straightforward, establishing this baseline is critical. It defines the "normal" state against which anomalies, stress, and failures are detected. All subsequent phases will explore how this happy path breaks down. We learn that traffic isn't always constant, latency can increase unpredictably, errors can occur even when logic is correct, and saturation can lead to cascading failures. By first mastering the ideal scenario, we gain the context needed to diagnose and understand the complex, often counterintuitive, behaviors that emerge under pressure. This foundational knowledge—of requirements, metrics, and idealized performance—is not just a starting point; it is the essential lens through which all future system design challenges must be viewed.
 
+![Happy path](images/1.png)
+
 > 📊 **Formula: Error Budget**
 > $$ \text{Error Budget} = 100\% - \text{SLO Percentage} $$
 > This formula calculates the maximum allowable failure rate for a service within a defined time window .
 
 > 🔑 **Key Takeaway:** Before designing a system, one must first define its purpose through functional requirements and its quality through non-functional requirements, using a shared vocabulary of metrics like the Four Golden Signals and the SLO/Error Budget framework to guide development.
-
-> ![Happy path](images/1.png)
 
 ## Phase 2: The Reality - Hardware Physics, State Mechanics, and Breaking Points
 
@@ -66,6 +66,8 @@ Another powerful example is the 2021 Facebook outage, which stemmed from a misco
 
 These post-mortems move the discussion from abstract theory to concrete evidence. They show that ignoring hardware physics leads to slow systems, that naive state management creates bottlenecks and bugs, and that dependencies and operational complexity create hidden points of failure. This phase equips the learner with the mental models to anticipate these breaking points before they manifest in a production outage.
 
+![Happy path with bottleneck](images/2.png)
+
 > ⚠️ **Anti-Pattern: Operational Single Point of Failure**
 > A system or process where a single person, machine, or procedure is indispensable for maintaining or recovering the system. The Facebook outage is a prime example, where the reliance on a specific command-line interface for BGP configuration and physical access for hardware modification created a critical bottleneck during the incident .
 
@@ -73,8 +75,6 @@ These post-mortems move the discussion from abstract theory to concrete evidence
 > During routine maintenance, a configuration change was deployed to patch a vulnerability in React Server Components. This change inadvertently introduced a bug in the Bot Management generation logic, causing a massive surge of errors across Cloudflare's global network . The faulty logic led to a global failure, rendering a significant portion of the internet inaccessible as Cloudflare's resolvers began returning widespread errors . The root cause was a subtle interaction between the new code and the existing high-load conditions, demonstrating how a localized bug in a stateful system can trigger a global cascade .
 
 > 🔑 **Key Takeaway:** Systems break not just because of bugs, but because of the interplay between software logic, hardware limitations, and the sheer complexity of managing state at scale. Real-world outages demonstrate that dependencies, operational procedures, and stateful subsystems are common sources of catastrophic failure.
-
-> ![Happy path with bottleneck](images/2.png)
 
 ## Phase 3: The Scale - Consistency Models, Distributed Theorems, and Systemic Consequences
 
@@ -98,6 +98,8 @@ The systemic consequences of the outage unfolded in stages, perfectly illustrati
 
 The AWS outage is a masterclass in systemic failure. It shows that even a highly engineered platform like AWS is vulnerable when a critical, low-level service fails. It highlights the immense difficulty of debugging and recovering from failures that propagate through multiple layers of abstraction. The fact that knock-on effects lasted significantly longer than the primary failure demonstrates that secondary effects can be far more damaging than the initial trigger . The incident underscores the importance of understanding not just the CAP trade-offs within a single service, but the entire dependency graph of a platform. It is a powerful reminder that at scale, a system is not just the sum of its parts, but the complex, emergent behavior of their interactions.
 
+![technical diagram comparing a monolithic system to a distributed system](images/3.png)
+
 > 📊 **Formula: PACELC Trade-offs**
 > The PACELC theorem defines four possible system configurations based on its trade-offs:
 > *   **PA/EL**: Prioritize **Availability** during partitions; prioritize **Low Latency** during normal operation.
@@ -110,8 +112,6 @@ The AWS outage is a masterclass in systemic failure. It shows that even a highly
 > A race condition in the internal DNS management system of DynamoDB caused its DNS records to be deleted, making the service unreachable for approximately three hours in the `us-east-1` region . Because DynamoDB is a foundational service for many other AWS products, including EC2 and NLB, this failure triggered a massive, multi-hour cascade of outages across the platform . EC2 experienced a "congestive collapse" as it struggled to recover from a backlog of failed state checks, remaining unstable for over 11 hours after DynamoDB recovered . The incident is a canonical example of how a failure in a low-level, highly available service can undermine the availability of an entire ecosystem of dependent services, demonstrating the systemic risks of concentrated dependencies .
 
 > 🔑 **Key Takeaway:** Scaling a system horizontally introduces the fundamental trade-offs codified by the CAP and PACELC theorems. Real-world outages demonstrate that these are not just academic choices but powerful forces that shape the behavior of entire platforms, with failures in foundational services capable of triggering cascading collapses across multiple dependent systems.
-
-> ![technical diagram comparing a monolithic system to a distributed system](images/3.png)
 
 ## Phase 4: The Physics - First Principles, SRE Culture, and Failure Analysis
 
@@ -150,6 +150,8 @@ The following table outlines the multi-tiered epistemic tagging system that shou
 
 By integrating these deep theoretical principles with proven operational practices, this phase completes the learner's journey from an intuitive developer to a systems-aware engineer. It provides the tools to not only design systems but also to analyze, debug, and improve them in the face of inevitable failure.
 
+![technical diagram illustrating the 'Five Whys' technique](images/4.png)
+
 > 📊 **Formula: Goodhart's Law**
 > $ \text{When a measure becomes a target, it ceases to be a good measure.} $
 > This law warns that optimizing for a single metric can lead to unintended negative consequences on other aspects of system health, highlighting the need for a balanced monitoring strategy .
@@ -158,8 +160,6 @@ By integrating these deep theoretical principles with proven operational practic
 > In 2017, GitLab accidentally deleted its production Postgres database. Compounding the disaster, they discovered their backups were also corrupt and incomplete. The incident forced the company to spend days painstakingly piecing together source code and data from various logs and snapshots to restore the service . This event is a `[CONSULTED STANDARD]` example of a worst-case operational failure, highlighting the critical importance of validating backups and treating the entire backup-and-restore process as a production-grade service .
 
 > 🔑 **Key Takeaway:** True system resilience is a synthesis of sound technical design, grounded in unbreakable first principles, and a mature operational culture that embraces failure as a primary source of learning. The blameless post-mortem is the ritual through which this learning occurs.
-
-> ![technical diagram illustrating the 'Five Whys' technique](images/4.png)
 
 ## Phase 5: Synthesis & Application - Decision-Making and Diagnostic Mental Models
 
@@ -190,9 +190,9 @@ Beyond structured tools like decision matrices, the ultimate goal of this pedago
 
 By internalizing these checkpoints, a designer develops a habit of mind that constantly probes for fragility. It transforms system design from a process of assembling components into a practice of sculpting resilience. It acknowledges that failure is not an anomaly but a statistical certainty in complex systems . Therefore, the goal is not to build a system that never fails, but one that fails safely, is easy to diagnose, and can be recovered from efficiently. This mindset, forged from a deep understanding of the foundational physics, mechanics, and operational realities of computing, is the hallmark of a truly legendary engineer. This concludes the pedagogical journey, providing a complete framework for acquiring the prerequisite knowledge needed to engage with the art and science of system design.
 
+![technical diagram illustrating a decision matrix](images/5.png)
+
 > 💥 **Post-Mortem: Private-CISA GitHub Repository Exposure**
 > In May 2026, a private GitHub repository belonging to CISA, the U.S. Cybersecurity and Infrastructure Security Agency, was found to be publicly accessible. The breach exposed a trove of sensitive materials, including AWS GovCloud credentials, plaintext passwords, Kubernetes manifests, Terraform code, and CI/CD workflow files . The repository was maintained by an employee of Nightwing, a CISA contractor. This incident is a `[CONSULTED STANDARD]` example of catastrophic operational failure. It demonstrates a breakdown in multiple security controls: long-lived credentials stored in plaintext, disabling of default secret scanning, secrets stored in source control history, and the use of personal accounts for work-related material. The exposure of administrative keys to AWS GovCloud, which is designed for highly sensitive government workloads, represents an extreme security risk, showcasing how a single human error combined with systemic policy failures can create a massive attack surface .
 
 > 🔑 **Key Takeaway:** The pinnacle of system design is the ability to synthesize disparate principles into a coherent strategy. This is achieved through structured decision-making tools like a decision matrix and, more importantly, an ingrained set of mental checkpoints that proactively diagnose potential failures related to dependencies, scalability, consistency, and observability.
-
-> ![technical diagram illustrating a decision matrix](images/5.png)
