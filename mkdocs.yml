@@ -28,8 +28,19 @@ markdown_extensions:
   - admonition               # For custom warning/info callout boxes
   - pymdownx.details         # For collapsible content blocks
   - pymdownx.superfences     # Superior parsing for complex code blocks / diagrams
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
   - toc:
-      permalink: true        # Adds clickable anchor links to headers (great for SEO)
+      permalink: true        # Adds clickable anchor links to headers
+      toc_depth: 3           # Restricts TOC depth to improve screen reader flow
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+hooks:
+  - hooks.py
 
 plugins:
   - search
