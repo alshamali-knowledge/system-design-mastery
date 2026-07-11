@@ -19,10 +19,17 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
   features:
-    - navigation.sections    # Grouping sections in the sidebar cleanly
-    - navigation.expand      # Automatically expands navigation trees
-    - search.suggest         # As-you-type search suggestions
-    - search.highlight       # Highlight searched terms on the page
+  - navigation.sections    # Grouping sections in the sidebar cleanly
+  - navigation.expand      # Automatically expands navigation trees
+  - navigation.instant
+  - navigation.prune
+  - search.suggest         # As-you-type search suggestions
+  - search.highlight       # Highlight searched terms on the page
+
+  extra:
+    analytics:
+      provider: google
+      property: G-69FMV7V3KQ
 
 markdown_extensions:
   - admonition               # For custom warning/info callout boxes
