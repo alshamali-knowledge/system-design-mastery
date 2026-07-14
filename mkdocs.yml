@@ -1,9 +1,16 @@
-site_name: Alshamali System Design Notes
-site_description: An encyclopedia-style guide on system design and software architecture.
-site_url: https://alshamali-knowledge.github.io/system-design-notes/
+site_name: "Chain of Knowledge: System Design Notes"
+site_description: "A structured, first-principles guide to mastering system design, distributed systems, and software architecture for engineers."
+site_url: "https://alshamali-knowledge.github.io/system-design-mastery/"
+
+# Repository info for professional open-source appearance
+repo_name: alshamali-knowledge/system-design-mastery
+repo_url: "https://github.com/alshamali-knowledge/system-design-mastery"
+edit_uri: edit/main/docs/
 
 theme:
   name: material
+  # logo: assets/logo.svg       # Uncomment when you add a logo
+  # favicon: assets/favicon.png # Uncomment when you add a favicon
   palette:
     # Light mode configuration
     - scheme: default
@@ -13,9 +20,7 @@ theme:
         icon: material/brightness-7
         name: Switch to dark mode
       color:
-        # Bumps footer text past the 4.5:1 barrier to high-contrast gray
         footer-fg: '#949494'
-        # Ensures footer hyperlinks are clean and readable
         footer-fg--lighter: '#e0e0e0'
     # Dark mode configuration
     - scheme: slate
@@ -25,34 +30,48 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
       color:
-        # Bumps dark mode footer text closer to white for contrast safety
         footer-fg: '#b0b0b0'
-        # Bumps dark mode footer links to an ultra-safe high-contrast tone
         footer-fg--lighter: '#f5f5f5'
   features:
-  - navigation.sections    # Grouping sections in the sidebar cleanly
-  - navigation.expand      # Automatically expands navigation trees
-  - navigation.instant
-  - navigation.prune
-  - search.suggest         # As-you-type search suggestions
-  - search.highlight       # Highlight searched terms on the page
+    - navigation.sections
+    - navigation.expand
+    - navigation.instant
+    - navigation.prune
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
 
 extra:
   analytics:
     provider: google
     property: G-69FMV7V3KQ
+  
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: "https://github.com/alshamali-knowledge"
+      name: GitHub Repository
+
+copyright: "Copyright &copy; 2026 Chain of Knowledge. Built for engineers, by engineers."
 
 markdown_extensions:
-  - admonition               # For custom warning/info callout boxes
-  - pymdownx.details         # For collapsible content blocks
-  - pymdownx.superfences     # Superior parsing for complex code blocks / diagrams
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
   - md_in_html
   - pymdownx.arithmatex:
       generic: true
   - toc:
-      permalink: true        # Adds clickable anchor links to headers
-      toc_depth: 3           # Restricts TOC depth to improve screen reader flow
+      permalink: true
+      toc_depth: 3
   - attr_list
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
 
 extra_javascript:
   - javascripts/mathjax.js
@@ -68,7 +87,7 @@ hooks:
 plugins:
   - search
   - awesome-pages
-  - minify:                # REQUIRED: Run `pip install mkdocs-minify-plugin`
+  - minify:
       minify_html: true
       minify_js: true
       minify_css: true
