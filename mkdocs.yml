@@ -2,17 +2,14 @@ site_name: "Chain of Knowledge: System Design Notes"
 site_description: "A structured, first-principles guide to mastering system design, distributed systems, and software architecture for engineers."
 site_url: "https://alshamali-knowledge.github.io/system-design-mastery/"
 
-# Repository info for professional open-source appearance
 repo_name: alshamali-knowledge/system-design-mastery
 repo_url: "https://github.com/alshamali-knowledge/system-design-mastery"
 edit_uri: edit/main/docs/
 
 theme:
   name: material
-  #logo: assets/logo.png       
-  favicon: assets/logo.png  
+  favicon: assets/favicon.png  
   palette:
-    # Light mode configuration
     - scheme: default
       primary: indigo
       accent: indigo
@@ -22,7 +19,6 @@ theme:
       color:
         footer-fg: '#949494'
         footer-fg--lighter: '#e0e0e0'
-    # Dark mode configuration
     - scheme: slate
       primary: indigo
       accent: indigo
@@ -43,19 +39,6 @@ theme:
     - content.code.copy
     - content.action.edit
     - content.action.view
-
-extra:
-  mathjax:
-  config:
-    tex:
-      inlineMath: [["\\(", "\\)"], ["$", "$"]]
-      displayMath: [["\\[", "\\]"], ["$$", "$$"]]
-      processEscapes: true
-      processEnvironments: true
-    options:
-      ignoreHtmlClass: "tex2jax_ignore"
-      processHtmlClass: "tex2jax_process"
-      enableMenu: false
 
   analytics:
     provider: google
@@ -89,16 +72,11 @@ markdown_extensions:
 
 extra_javascript:
   - javascripts/accessibility.js
-  - javascripts/mathjax-instant.js
-  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
-  #- javascripts/share-buttons.js
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js
 
 extra_css:
   - stylesheets/extra.css
-  #- stylesheets/share-buttons.css
-
-extra_head: |
-  <link rel="preconnect" href="https://unpkg.com" crossorigin>
 
 hooks:
   - hooks.py
