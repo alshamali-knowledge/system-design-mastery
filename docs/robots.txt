@@ -1,0 +1,4 @@
+   User-agent: *
+   Allow: /
+   
+   Sitemap: https://alshamali-knowledge.github.io/system-design-mastery/sitemap.xml
