@@ -13,7 +13,7 @@ To monitor these metrics effectively, engineers rely on what Google calls the "G
 ![technical diagram showing a monolithic application receiving a request](images/1.png)
 
 > ⚠️ **Anti-Pattern: Ignoring Concurrency and Latency Trade-offs**  
-> [Description: Designing a system under the assumption of a linear, synchronous "happy path" without considering the impact of concurrent requests and variable latency. This leads to poor capacity planning, unexpected performance degradation under load, and a false sense of system stability.]
+> Designing a system under the assumption of a linear, synchronous "happy path" without considering the impact of concurrent requests and variable latency. This leads to poor capacity planning, unexpected performance degradation under load, and a false sense of system stability.
 >
 > 🔑 **Key Takeaway:** A system is not merely its happy-path functionality; it is a collection of components interacting under stress. Foundational concepts like concurrency, SLOs, error budgets, and the Golden Signals provide the necessary vocabulary and tools to reason about system behavior beyond ideal conditions.
 
