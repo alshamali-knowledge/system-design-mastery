@@ -36,6 +36,7 @@ Every topic in this guide is structured around a unique 5-phase learning framewo
 ### Core Foundations & Theory
 - [Foundations Before System Design](000-Foundations Before System Design/README.md)
 - [System Design Mastery](001-System Design Mastery/README.md)
+- [Latency Vs Throughput Mastery](003-Latency vs Throughput Mastery/README.md)
 - [Performance Vs Scalability Mastery](002-Performance vs Scalability Mastery/README.md)
 - [Availability Consistency And Cap Theorem](004-Availability Consistency and CAP Theorem/README.md)
 - [Consistency Models Deep Dive](005-Consistency Models Deep Dive/README.md)
